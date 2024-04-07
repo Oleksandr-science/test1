@@ -16,7 +16,6 @@ jobs:
         run: git clone https://github.com/Klipper3d/klipper.git
       - name: Copy Repository to CustomKlipy
         run: |
-          cd test1
-          mkdir -p rev-$(date +%Y%m%d)
+          mkdir -p test1/rev-$(date +%Y%m%d)
           mv klipper test1/rev-$(date +%Y%m%d)
           git status
