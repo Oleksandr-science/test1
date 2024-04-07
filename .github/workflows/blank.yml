@@ -1,0 +1,26 @@
+name: Weekly CI/CD Check
+
+on:
+  #schedule:
+    #- cron: '0 0 * * 1'  # Every Monday at midnight
+  workflow_dispatch:
+
+jobs:
+  check-and-copy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Copy Repository to CustomKlipy
+        run: |
+          git clone https://github.com/Oleksandr-science/test1.git
+          
+		  
+	  - name: Copy Repository to CustomKlipy
+        run: |
+          git clone https://github.com/Klipper3d/klipper.git
+		  
+	  - name: Copy Repository to CustomKlipy
+        run: |
+          ls -la
+
+        
