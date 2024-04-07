@@ -18,4 +18,5 @@ jobs:
         run: |
           mkdir -p test1/rev-$(date +%Y%m%d)
           mv klipper test1/rev-$(date +%Y%m%d)
+          cd test1
           git status
