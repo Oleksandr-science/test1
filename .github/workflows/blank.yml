@@ -1,27 +1,23 @@
-name: Weekly CI/CD Check
+name: Push Changes to GitHub
 
-on:
-  #schedule:
-    #- cron: '0 0 * * 1'  # Every Monday at midnight
-  workflow_dispatch:
+on: 
+  push:
+    branches: [ main ]  # Trigger the workflow when changes are pushed to the main branch
 
 jobs:
-  check-and-copy:
+  build:  # Name of the job
     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4          
-      - name: Copy Repository to CustomKlipy
-        run: git clone https://github.com/Klipper3d/klipper.git
-      - name: Copy Repository to CustomKlipy
+    steps:  
+      - uses: actions/checkout@v4  # Check out your repository code
+
+      - name: Install dependencies
+        run: test321 > test1/test.txt
+
+      - name: Commit and Push Changes
         run: |
-          mkdir -p test1/rev-$(date +%Y%m%d)
-          mv klipper test1/rev-$(date +%Y%m%d)
-          cd test1
+          git config --global user.name "Oleksandr-science"
           git config --global user.email "3darduin@gmail.com"
-          git config --global user.name "Oleksandr3d"
-          git add .
-          git commit -m "Weekly update from Klipper repository"
-          git push https://Oleksandr-science:${{secrets.MY_GITHUB_TOKEN}}@github.com/Oleksandr-science/test1.git main
-         
-          
+          git add .  # Add all modified files
+          git commit -m "Automatic update from GitHub Actions"
+          git push origin main
