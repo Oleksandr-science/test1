@@ -22,6 +22,6 @@ jobs:
           git config --global user.name "Oleksandr3d"
           git add .
           git commit -m "Weekly update from Klipper repository"
-          git push https://Oleksandr-science:${{secrets.MY_GITHUB_TOKEN}}
+          git push https://Oleksandr-science:${{secrets.MY_GITHUB_TOKEN}}@github.com/Oleksandr-science/test1.git main
          
           
