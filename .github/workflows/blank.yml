@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4  # Check out your repository code
 
       - name: Install dependencies
-        run: 'test123' > test1.txt
+        run: test123 > test1.txt
 
       - name: Commit and Push Changes
         run: |
