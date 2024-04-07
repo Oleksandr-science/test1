@@ -5,6 +5,18 @@ on:
     branches: [ main ]  # Trigger the workflow when changes are pushed to the main branch
 
 jobs:
+  open-issue:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - run: |
+          gh issue --repo ${{ github.repository }} \
+            create --title "Issue title" --body "Issue body"
+        env:
+          GH_TOKEN: ${{ secrets.TOKEN }}
+          
   build:  # Name of the job
     runs-on: ubuntu-latest
 
