@@ -20,9 +20,9 @@ jobs:
           mv klipper test1/rev-$(date +%Y%m%d)
           cd test1
           git config --global user.email "3darduin@gmail.com"
-		      git config --global user.name "Oleksandr-science"
-		      git add .
-		      git commit -m "Weekly update from Klipper repository"
-		      git push
+          git config --global user.name "Oleksandr-science"
+          git add .
+          git commit -m "Weekly update from Klipper repository"
+          git push
          
           
