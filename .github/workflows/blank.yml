@@ -11,16 +11,12 @@ jobs:
 
     steps:
       - name: Copy Repository to CustomKlipy
-        run: |
-          git clone https://github.com/Oleksandr-science/test1.git
-          
-		  
-	  - name: Copy Repository to CustomKlipy
-        run: |
-          git clone https://github.com/Klipper3d/klipper.git
-		  
-	  - name: Copy Repository to CustomKlipy
-        run: |
-          ls -la
+        run: git clone https://github.com/Oleksandr-science/test1.git
+            
+      - name: Copy Repository to CustomKlipy
+        run: git clone https://github.com/Klipper3d/klipper.git
+	
+      - name: Copy Repository to CustomKlipy
+        run: ls -la
 
         
