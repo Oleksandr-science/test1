@@ -28,7 +28,7 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          $GH_TOKEN > /tmp/clone
+          echo $GH_TOKEN > /tmp/clone
           chmod 400 /tmp/clone
           git add .  # Add all modified files
           git commit -m "Automatic update from GitHub Actions"
