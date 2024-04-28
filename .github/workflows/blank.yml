@@ -1,32 +1,20 @@
 name: Push Changes to GitHub
 
 on: 
-  push:
-    branches: [ main ]  # Trigger the workflow when changes are pushed to the main branch
+  workflow_dispatch:
 
 jobs:
-  # open-issue:
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     contents: read
-  #     issues: write
-  #   steps:
-  #     - run: |
-  #         gh issue --repo ${{ github.repository }} \
-  #           create --title "Issue title" --body "Issue body"
-  #       env:
-  #         GH_TOKEN: ${{ secrets.TOKEN }}
           
-  build:  # Name of the job
+  build:
     runs-on: ubuntu-latest
 
     steps:  
       - uses: actions/checkout@v4  # Check out your repository code
 
-      - name: temp file
+      - name: clone klipper repo
         run: |
           cd /home/runner/work/test1/test1
-          git clone https://github.com/Klipper3d/klipper.git rev-$(date +%Y%m%d)
+          git submodule add https://github.com/Klipper3d/klipper.git rev-$(date +%Y%m%d%H%m)
 
       - name: Commit and Push Changes
         run: |
