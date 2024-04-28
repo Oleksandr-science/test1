@@ -30,14 +30,14 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          echo $GH_TOKEN > ~/.ssh/clone
-          chmod 400 ~/.ssh/clone
+          echo $GH_TOKEN > /home/runner/.ssh/clone
+          chmod 400 /home/runner/.ssh/clone
           git config --global user.email "3darduin@gmail.com"
           git config --global user.name "Oleksandr-science"
           git add .  # Add all modified files
           git commit -m "Automatic update from GitHub Actions"
           eval `ssh-agent -s`
-          ssh-add ~/.ssh/clone
+          ssh-add /home/runner/.ssh/clone
           git push git@github.com:Oleksandr-science/test1.git
         env:
           GH_TOKEN: ${{ secrets.CLONE }}
