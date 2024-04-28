@@ -23,15 +23,17 @@ jobs:
     steps:  
       - uses: actions/checkout@v4  # Check out your repository code
 
-      - name: Install dependencies
+      - name: temp file
         run: pwd > test1.txt
 
       - name: Commit and Push Changes
         run: |
-          git config --global user.name "Oleksandr-science"
-          git config --global user.email "3darduin@gmail.com"
+          $GH_TOKEN > /tmp/clone
+          chmod 400 /tmp/clone
           git add .  # Add all modified files
           git commit -m "Automatic update from GitHub Actions"
-          git push origin main
+          git push git@github.com:Oleksandr-science/test1.git -key "/tmp/clone"
+        env:
+          GH_TOKEN: ${{ secrets.CLONE }}
 
   
