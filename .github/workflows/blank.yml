@@ -25,17 +25,18 @@ jobs:
 
       - name: temp file
         run: |
-          ls -lah
-          touch /home/runner/test1.txt
-          pwd > /home/runner/test1.txt
-          cat /home/runner/test1.txt
+          touch /home/runner/work/test1/test1/test1.txt
+          date > /home/runner/work/test1/test1/test1.txt
+          cat /home/runner/work/test1/test1/test1.txt
 
       - name: Commit and Push Changes
         run: |
           echo $GH_TOKEN > /home/runner/.ssh/clone
+          cat /home/runner/.ssh/clone
           chmod 400 /home/runner/.ssh/clone
           git config --global user.email "3darduin@gmail.com"
           git config --global user.name "Oleksandr-science"
+          cd /home/runner/work/test1/test1
           git add .  # Add all modified files
           git commit -m "Automatic update from GitHub Actions"
           eval `ssh-agent -s`
