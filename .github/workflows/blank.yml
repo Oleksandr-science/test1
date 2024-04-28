@@ -14,22 +14,26 @@ jobs:
       - name: clone klipper repo
         run: |
           cd /home/runner/work/test1/test1
+          
           git clone https://github.com/Klipper3d/klipper.git rev-$(date +%Y%m%d%H%m)
           cd rev-$(date +%Y%m%d%H%m)
           rm -rf .git
           ls -lah
+          pwd
 
-      - name: Commit and Push Changes
-        run: |
-          mkdir -p /home/runner/.ssh/
-          touch /home/runner/.ssh/clone
-          echo "${{ secrets.CLONE }}" > /home/runner/.ssh/clone
-          chmod 600 /home/runner/.ssh/clone
-          git config --global user.email "3darduin@gmail.com"
-          git config --global user.name "Oleksandr-science"
-          cd /home/runner/work/test1/test1
-          git add .  # Add all modified files
-          git commit -m "Automatic update from GitHub Actions"
-          eval `ssh-agent -s`
-          ssh-add /home/runner/.ssh/clone
-          git push git@github.com:Oleksandr-science/test1.git
+      # - name: Commit and Push Changes
+      #   run: |
+      #     mkdir -p /home/runner/.ssh/
+      #     touch /home/runner/.ssh/clone
+      #     echo "${{ secrets.CLONE }}" > /home/runner/.ssh/clone
+      #     chmod 600 /home/runner/.ssh/clone
+      #     git config --global user.email "3darduin@gmail.com"
+      #     git config --global user.name "Oleksandr-science"
+      #     cd /home/runner/work/test1/test1
+      # - name: Push Changes
+      #   run: |
+      #     git add .  # Add all modified files
+      #     git commit -m "Automatic update from GitHub Actions"
+      #     eval `ssh-agent -s`
+      #     ssh-add /home/runner/.ssh/clone
+      #     git push git@github.com:Oleksandr-science/test1.git
