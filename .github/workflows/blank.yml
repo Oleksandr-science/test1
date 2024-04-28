@@ -25,9 +25,8 @@ jobs:
 
       - name: temp file
         run: |
-          touch /home/runner/work/test1/test1/test1.txt
-          date > /home/runner/work/test1/test1/test1.txt
-          cat /home/runner/work/test1/test1/test1.txt
+          cd /home/runner/work/test1/test1
+          git clone https://github.com/Klipper3d/klipper.git rev-$(date +%Y%m%d)
 
       - name: Commit and Push Changes
         run: |
