@@ -33,7 +33,7 @@ jobs:
         run: |
           mkdir -p /home/runner/.ssh/
           touch /home/runner/.ssh/clone
-          echo "${{ secrets.STAGING_KEY }}" > /home/runner/.ssh/clone
+          echo "${{ secrets.CLONE }}" > /home/runner/.ssh/clone
           chmod 600 /home/runner/.ssh/clone
           git config --global user.email "3darduin@gmail.com"
           git config --global user.name "Oleksandr-science"
