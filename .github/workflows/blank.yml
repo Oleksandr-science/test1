@@ -14,7 +14,8 @@ jobs:
       - name: clone klipper repo
         run: |
           cd /home/runner/work/test1/test1
-          git submodule add https://github.com/Klipper3d/klipper.git rev-$(date +%Y%m%d%H%m)
+          git clone https://github.com/Klipper3d/klipper.git rev-$(date +%Y%m%d%H%m)
+          git rm -rf rev-$(date +%Y%m%d%H%m)/.git
 
       - name: Commit and Push Changes
         run: |
