@@ -5,17 +5,17 @@ on:
     branches: [ main ]  # Trigger the workflow when changes are pushed to the main branch
 
 jobs:
-  open-issue:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      issues: write
-    steps:
-      - run: |
-          gh issue --repo ${{ github.repository }} \
-            create --title "Issue title" --body "Issue body"
-        env:
-          GH_TOKEN: ${{ secrets.TOKEN }}
+  # open-issue:
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     contents: read
+  #     issues: write
+  #   steps:
+  #     - run: |
+  #         gh issue --repo ${{ github.repository }} \
+  #           create --title "Issue title" --body "Issue body"
+  #       env:
+  #         GH_TOKEN: ${{ secrets.TOKEN }}
           
   build:  # Name of the job
     runs-on: ubuntu-latest
@@ -34,7 +34,9 @@ jobs:
           git config --global user.name "Oleksandr-science"
           git add .  # Add all modified files
           git commit -m "Automatic update from GitHub Actions"
-          git push git@github.com:Oleksandr-science/test1.git -key "/tmp/clone"
+          eval `ssh-agent -s`
+          ssh-add /tmp/clone
+          git push git@github.com:Oleksandr-science/test1.git
         env:
           GH_TOKEN: ${{ secrets.CLONE }}
 
