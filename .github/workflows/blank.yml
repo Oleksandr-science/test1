@@ -30,6 +30,8 @@ jobs:
         run: |
           echo $GH_TOKEN > /tmp/clone
           chmod 400 /tmp/clone
+          git config --global user.email "3darduin@gmai.com"
+          git config --global user.name "Oleksandr-science"
           git add .  # Add all modified files
           git commit -m "Automatic update from GitHub Actions"
           git push git@github.com:Oleksandr-science/test1.git -key "/tmp/clone"
