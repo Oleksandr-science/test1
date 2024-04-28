@@ -31,9 +31,9 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          touch /home/runner/.ssh/clone
-          echo $GH_TOKEN > /home/runner/.ssh/clone
-          cat /home/runner/.ssh/clone
-          chmod 400 /home/runner/.ssh/clone
+          touch /home/runner/clone
+          echo $GH_TOKEN > /home/runner/clone
+          cat /home/runner/clone
+          chmod 400 /home/runner/clone
         env:
           GH_TOKEN: ${{ secrets.CLONE }}
