@@ -15,7 +15,9 @@ jobs:
         run: |
           cd /home/runner/work/test1/test1
           git clone https://github.com/Klipper3d/klipper.git rev-$(date +%Y%m%d%H%m)
-          git rm -rf rev-$(date +%Y%m%d%H%m)/.git
+          cd rev-$(date +%Y%m%d%H%m)
+          rm -rf .git
+          ls -lah
 
       - name: Commit and Push Changes
         run: |
